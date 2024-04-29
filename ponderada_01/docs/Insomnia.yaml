@@ -1,0 +1,154 @@
+_type: export
+__export_format: 4
+__export_date: 2024-04-25T14:00:44.206Z
+__export_source: insomnia.desktop.app:v8.6.1
+resources:
+  - _id: req_34985a06113a487ab84135315de4b74a
+    parentId: wrk_c9bcd51347ad4b4fa7f1db94a7fd2d47
+    modified: 1714052435834
+    created: 1714052407843
+    url: "{{ _.asyncUrl }}/users"
+    name: asyncGetUsers
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1714052407843
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_c9bcd51347ad4b4fa7f1db94a7fd2d47
+    parentId: null
+    modified: 1713723026243
+    created: 1713723026243
+    name: Pond1Collection
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_c7f0e053d4cf438db0bbf6b122ffd54f
+    parentId: wrk_c9bcd51347ad4b4fa7f1db94a7fd2d47
+    modified: 1714052498301
+    created: 1714052358975
+    url: "{{asyncUrl}}/users"
+    name: asyncPostUsers
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "TesteAsync",
+          "email": "mail@mail.com",
+          "password": "123456"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1714052358975
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a6cc09af3f744060a828e5f499c9f74e
+    parentId: wrk_c9bcd51347ad4b4fa7f1db94a7fd2d47
+    modified: 1714052505094
+    created: 1713723902974
+    url: "{{syncUrl }}/users"
+    name: syncPostUsers
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "TesteSync",
+          "email": "mail@mail.com",
+          "password": "123456"
+        }
+    parameters:
+      - id: pair_74c0879784214acd993bdc044dbf6344
+        name: ""
+        value: ""
+        description: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1713723902974
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d5a66586734b4af0a77be13980de275a
+    parentId: wrk_c9bcd51347ad4b4fa7f1db94a7fd2d47
+    modified: 1714052335861
+    created: 1713723723234
+    url: "{{syncUrl}}/users"
+    name: syncGetUsers
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1713723723234
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_5175a81f06662558cdd40e5d8c7b7d89ed4e0183
+    parentId: wrk_c9bcd51347ad4b4fa7f1db94a7fd2d47
+    modified: 1714052330818
+    created: 1713723026245
+    name: Base Environment
+    data:
+      syncUrl: http://localhost:5000
+      asyncUrl: http://localhost:5001
+    dataPropertyOrder:
+      "&":
+        - syncUrl
+        - asyncUrl
+    color: null
+    isPrivate: false
+    metaSortKey: 1713723026245
+    _type: environment
+  - _id: jar_5175a81f06662558cdd40e5d8c7b7d89ed4e0183
+    parentId: wrk_c9bcd51347ad4b4fa7f1db94a7fd2d47
+    modified: 1713723026248
+    created: 1713723026248
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar

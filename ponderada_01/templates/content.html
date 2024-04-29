@@ -11,6 +11,7 @@
     <p>Another? <a href="http://localhost:5000/content">Get Here</a></p>
     <script>
         async function save_and_load_token(){
+            //Pega os cookies da página
             let myCookie = await browser.cookies.get("token");
             console.log(myCookie)
             if (myCookie){

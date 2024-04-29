@@ -1,0 +1,143 @@
+openapi: 3.0.0
+info:
+  title: Flask User Management API
+  description: API para gerenciamento de usuários usando Flask
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+    description: Servidor de Desenvolvimento
+paths:
+  /token:
+    post:
+      summary: Gera um token de autenticação para o usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Token de autenticação gerado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  user_id:
+                    type: integer
+        '401':
+          description: Usuário ou senha inválidos
+  /users:
+    get:
+      summary: Obtém todos os usuários cadastrados
+      responses:
+        '200':
+          description: Lista de usuários obtida com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      summary: Cria um novo usuário
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Usuário criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /users/{id}:
+    get:
+      summary: Obtém um usuário específico pelo ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID do usuário a ser obtido
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Usuário obtido com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: Usuário não encontrado
+    put:
+      summary: Atualiza um usuário existente pelo ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID do usuário a ser atualizado
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Usuário atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: Usuário não encontrado
+    delete:
+      summary: Deleta um usuário existente pelo ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID do usuário a ser deletado
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Usuário deletado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: Usuário não encontrado
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        id: 1
+        name: João
+        email: joao@example.com
+        password: senha123
