@@ -1,0 +1,14 @@
+# app.py
+import logging
+from fastapi import Request
+
+logging.basicConfig(level=logging.WARNING, filename='app.log', filemode='a', format='%(asctime)s - %(levelname)s - %(message)s')
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    response = await call_next(request)
+    if response.status_code >= 400:
+        logging.warning(f"{request.method} {request.url} - {response.status_code}")
+    return response
+
+# (resto do código permanece o mesmo)
