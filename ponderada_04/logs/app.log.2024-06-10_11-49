@@ -1,0 +1,2 @@
+{"time": "2024-06-10 11:49:19,535", "name": "main", "level": "INFO", "message": "Acessando a rota /"}
+{"time": "2024-06-10 11:51:31,874", "name": "routers.produtos", "level": "INFO", "message": "{'message': 'Acessando a rota /produtos', 'method': 'GET'}"}

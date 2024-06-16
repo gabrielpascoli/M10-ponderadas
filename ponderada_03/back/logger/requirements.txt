@@ -1,0 +1,4 @@
+flask[async]
+Flask-SQLAlchemy
+Flask-JWT-Extended
+requests

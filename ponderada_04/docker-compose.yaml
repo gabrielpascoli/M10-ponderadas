@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  userProducts:
+    build: ./userProducts/
+    ports:
+      - "8000:80"
+    container_name: userProducts
+    volumes:
+      - ./logs:/app/logs
+
+  ordersClient:
+    build: ./ordersClient/
+    ports:
+      - "8100:81"
+    container_name: ordersClient
+    volumes:
+      - ./logs:/app/logs
+
+  filebeat:
+    build: ./filebeat/
+    container_name: filebeat
+    volumes:
+      - ./logs:/src/logs
+    depends_on:
+      - backend
+      - elasticsearch
+      - kibana
+    network_mode: "host"
+
+  elasticsearch:
+    build: ./elasticsearch/
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  kibana:
+    build: ./kibana/
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+
+  gateway:
+    build: ./gateway/
+    container_name: gateway
+    ports:
+      - "3000:30"
+    volumes:
+      - ./logs:/var/log/nginx
+
+volumes:
+    elasticsearch_data:
+        driver: local
